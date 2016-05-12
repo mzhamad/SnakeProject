@@ -4,9 +4,9 @@ A basic snake game. Only in this game, there will be an AI. Lose when you crash 
 # Spec:
 
 #### Classes:
-- userInterface
+- staticInterface
+- dynamicInterface
 - label
-- controlMaster
 - grid
 - blockBase
 - blockSnake
