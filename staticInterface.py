@@ -116,3 +116,6 @@ class staticInterface(object):
         labelGroup.add(title)
 
     
+#if this is file running, run this main
+if __name__ == "__main__":
+    main()
