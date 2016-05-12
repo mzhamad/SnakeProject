@@ -51,10 +51,6 @@ class grid(object):
             print('\n')
             for j in matrix[i]:
                 print( matrix[i][j].x  +  ","  +  matrix[i][j].y  +  " " )
-    
-# ======================= #
-# end grid                #
-# ======================= #
 
 
 if __name__ == "__main__":
