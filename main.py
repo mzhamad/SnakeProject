@@ -1,7 +1,7 @@
 """ main.py
     by Ibrahim Sardar
 
-    NO TESTED YET!
+    NOT TESTED YET!
     
 """
 
