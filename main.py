@@ -6,23 +6,29 @@
 """
 
 #load
-import pygame, userInterface, collisionMaster
+import pygame, staticInterface, dynamicInterface
 
 #init
 pygame.init()
 
 #resources
+# -colors
+BLACK  = (  0,   0,   0)
+WHITE  = (255, 255, 255)
+GREY   = (192, 192, 192)
+GREEN  = (  0, 255,   0)
+PINK   = (255, 183, 234)
+RED    = (255,   0,   0)
+ORANGE = (255, 128,   0)
+BLUE   = (  0,   0, 255)
+BROWN  = (102,  51,   0)
+PURPLE = (102,   0, 102)
+YELLOW = (255, 255,   0)
 
-# -window
-WINDOWWIDTH   = 720 #depends on xpadding and blockBase width
-WINDOWHEIGHT  = 380 #depends on ypadding and blockBase height
-WINDOWCENTER  = (WINDOWWIDTH/2, WINDOWHEIGHT/2)
-windowSurface = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
-pygame.display.set_caption("The Snake Game")
-
-""" userInterface AND controlMaster WILL USE THESE
-# -clock
-clock = pygame.time.Clock()
+# -fonts
+font1 = pygame.font.SysFont("aharoni", 72)
+font2 = pygame.font.SysFont("comicsansms", 28)
+font3 = pygame.font.SysFont("miriamfixed", 12)
 
 # -keys
 _quit    = pygame.QUIT
@@ -33,45 +39,43 @@ _down    = pygame.K_DOWN
 _right   = pygame.K_RIGHT
 _left    = pygame.K_LEFT
 _keydown = pygame.KEYDOWN
-"""
+
+# -window
+WINDOWWIDTH   = 720 #depends on xpadding and blockBase width
+WINDOWHEIGHT  = 380 #depends on ypadding and blockBase height
+WINDOWCENTER  = (WINDOWWIDTH/2, WINDOWHEIGHT/2)
+windowSurface = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
+pygame.display.set_caption("The Snake Game")
+
+# -clock
+clock = pygame.time.Clock()
 
 
 #main
 def main():
 
-    #make a new UI ***not created yet
-    ui = userInterface(WINDOWWIDTH, WINDOWHEIGHT)
+    #make a new Static Interface
+    si = userInterface(WINDOWWIDTH, WINDOWHEIGHT)
 
-    #make a new Control Master ***not created yet
-    cm = controlMaster(WINDOWWIDTH, WINDOWHEIGHT)
+    #make a new Dynamic Interface ***not created yet
+    di = dynamicInterface(WINDOWWIDTH, WINDOWHEIGHT)
+
+    #set si to startscreen
+    si.setCondition(0)
 
     #game loop
     while(True):
-
-        #user interface
-        ui.run()
-        """ PSUEDO
-        if gameCondition == -1:
-            gameScreen()
-        elif gameCondition == 0:
-            startScreen()
-        elif gameCondition == 1:
-            pauseScreen()
-        elif gameCondition == 2:
-            endScreen()
-            quitGame()
-        #etc...
-
-        """
         
         #event handle
-        cm.events()
+        # basically, readys the variables for an
+        # update later depending on user inputs
+        di.events()
         """ PSUEDO
         # --assumming custom events have been created-- #
         for event in pygame.event.get():
 
             if event.type == _quit:
-                ui.quit()
+                quit()
 
             elif event.type == _keydown:
 
@@ -86,56 +90,13 @@ def main():
                 # /!\ ...and here
         """
 
-        #collision handle  -possibly don't need this
-        cm.collisions()
-        """ PSUEDO
-        # --remeber most collisions will be in events-- #
-        for x in grid:
-            for block in grid[x]:
-                if block.property is something
-                    do this
-                elif ...etc.
-        """
-
         #transfer data between handlers
-        ui.obtain(cm.getData())
-        """ PSUEDO
-        #-cm-
-        return (condition, otherStuff)
-        #-ui-
-        gameCondition = condition
-        #(use otherStuff...)
-        """
+        si.setCondition(di.getCondition())
 
         #update
-        ui.update()
-        """ PSUEDO
-        if gameCondition == -1:
-            pass #cm got it
-        elif gameCondition == 0:
-            startScreen()
-        elif gameCondition == 1:
-            pauseScreen()
-        elif gameCondition == 2:
-            endScreen()
-            quitGame()
-        #etc...
-        
-        """
-        cm.update()
-        """ PSUEDO
-        if gameCondition == -1:
-            windowSurface.fill(GAMECOLOR)
-            grid.update()
-        elif gameCondition == 0:
-            pass #ui got it
-        elif gameCondition == 1:
-            pass #ui got it
-        elif gameCondition == 2:
-            pass #ui got it
-        #etc...
-        
-        """
+        si.update() # -blit static graphics first
+        di.update() # -then blit dynamic graphics if
+                    #  current condition includes them
         pygame.display.update()
 
 

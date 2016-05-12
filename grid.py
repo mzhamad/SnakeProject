@@ -7,7 +7,6 @@
 
 #load
 import blockBase
-#from pygame.locals import *
 
 #resources
 BLACK  = (  0,   0,   0)

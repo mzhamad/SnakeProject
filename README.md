@@ -5,6 +5,7 @@ A basic snake game. Only in this game, there will be an AI. Lose when you crash 
 
 #### Classes:
 - userInterface
+- label
 - controlMaster
 - grid
 - blockBase
