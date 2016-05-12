@@ -1,18 +1,18 @@
 # SnakeProject
 
 ---
-# Spec:
+## Spec:
 
-Classes:
--userInterface
--controlMaster
--grid
--blockBase
--blockSnake
--blockFood
--snakeBase
--snakeUser
--snakeAi
+#### Classes:
+...userInterface
+...controlMaster
+...grid
+...blockBase
+...blockSnake
+...blockFood
+...snakeBase
+...snakeUser
+...snakeAi
 
-Functions:
--main
+#### Functions:
+...main
