@@ -20,7 +20,7 @@ WINDOWCENTER  = (WINDOWWIDTH/2, WINDOWHEIGHT/2)
 windowSurface = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
 pygame.display.set_caption("The Snake Game")
 
-""" userInterface AND collisionMaster WILL USE THESE
+""" userInterface AND controlMaster WILL USE THESE
 # -clock
 clock = pygame.time.Clock()
 
