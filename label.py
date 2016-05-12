@@ -26,3 +26,8 @@ class label(pygame.sprite.Sprite):
 
     def update(self):    
         windowSurface.blit(self.image, self.rect)
+
+
+#if this is file running, run this main
+if __name__ == "__main__":
+    main()
