@@ -1,5 +1,7 @@
 """ PygameEx.py
-    Ibrahim
+    Ibrahim Sardar
+
+    note:  this is just an example for a quick help reference
 """
 
 #load
