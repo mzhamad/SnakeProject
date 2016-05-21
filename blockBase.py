@@ -1,3 +1,5 @@
+#load
+
 import pygame, sys, time
 from pygame.locals import *
 
@@ -34,14 +36,5 @@ class blockBase(pygame.sprite.Sprite):
     def setImage(self, width, height):
         self.image = pygame.Surface((width, height))
         self.rect  = self.image.get_rect()
-
-    def changeSize(self, size):
-        xP = self.rect.centerx
-        yP = self.rect.centery
-        w  = size
-        h  = size
-        self.setImage(w, h)
-        self.rect.centerx = xP
-        self.rect.centery = yP
 
 //end blockBase class
