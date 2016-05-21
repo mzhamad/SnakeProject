@@ -1,27 +1,25 @@
+""" blockBase.py
+"""
+
 #load
-
-import pygame, sys, time
-from pygame.locals import *
-
-#res
-WINDOWWIDTH   = 720
-WINDOWHEIGHT  = 380
-WINDOWCENTER  = (WINDOWWIDTH/2, WINDOWHEIGHT/2)
-BLACK  = (  0,   0,   0)
-WHITE  = (255, 255, 255)
+import pygame
 
 #init
 pygame.init()
-windowSurface = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
-timer = pygame.time.Clock()
 
+#window
+WINDOWWIDTH   = 720
+WINDOWHEIGHT  = 380
+windowSurface = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
+
+#blockBase
 class blockBase(pygame.sprite.Sprite):
     #initializer
-    def __init__(self, w, h):
+    def __init__(self, color, w, h):
         #attributes
         pygame.sprite.Sprite.__init__(self)
         self.setImage(w, h)
-        self.color = BLACK
+        self.color = color
 
     # --- update method --- #
     def update(self):
@@ -29,7 +27,7 @@ class blockBase(pygame.sprite.Sprite):
         self.image.fill(self.color)
 
     # --- get/set methods --- #
-    def setCenterPosition(self, xPos, yPos):
+    def setCenterPos(self, xPos, yPos):
         self.rect.centerx = xPos
         self.rect.centery = yPos
 
@@ -37,4 +35,4 @@ class blockBase(pygame.sprite.Sprite):
         self.image = pygame.Surface((width, height))
         self.rect  = self.image.get_rect()
 
-//end blockBase class
+#end blockBase class
